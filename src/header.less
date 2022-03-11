@@ -1,0 +1,80 @@
+
+// style for header top
+
+.header_top{
+    background-color: @color-white;
+    padding: 0 10px;
+}
+
+
+
+.header_inner{
+    &:extend(.flex-sp-between);
+    padding: 10px 0;
+
+    .logo{
+        max-width: 105px;
+        height: 26px; 
+    }
+}
+
+.menu_list{
+    &:extend(.flex-sp-between);
+
+    .menu_item{
+        line-height: 0;
+    }
+
+    .menu_item_link{
+        max-width: 130px;
+        line-height: 26px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 7px 15px;
+        border-radius: 4px;
+        &:hover,
+        &:focus{
+            background-color: rgba(0, 189, 211, 0.1);
+            color: @secondary-color;
+        }
+        transition: background-color .2s;
+    }
+}
+
+// style for header content
+
+.header_content{
+    padding: 0 30px;
+    min-height: calc(100vh - 60px);
+    background: @bg-color-header url("../img/bg-img/header.jpg")no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.header_content_inner{
+    max-width: 670px;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+
+    .title{
+        font-family: 'Nunito-regular', sans-serif;
+        font-weight: 400;
+        font-size: @size-forty;
+        line-height: @size-forty;
+    }
+
+    .title_desc{
+        max-width: 530px;
+        margin: 20px 0 0;
+    }
+}
+
+
+// style for mobile menu
+
+.mobile_block_menu,
+.mobile_menu_btn{
+    display: none;
+}

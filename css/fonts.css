@@ -1,0 +1,29 @@
+/* nunito-regular - latin */
+@font-face {
+    font-family: 'Nunito-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/nunito/nunito-v22-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/nunito/nunito-v22-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/nunito/nunito-v22-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/nunito/nunito-v22-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/nunito/nunito-v22-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/nunito/nunito-v22-latin-regular.svg#Nunito') format('svg'); /* Legacy iOS */
+}
+
+/* asap-regular - latin */
+@font-face {
+    font-family: 'Asap-regular';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/asap/asap-v21-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local(''),
+         url('../fonts/asap/asap-v21-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/asap/asap-v21-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/asap/asap-v21-latin-regular.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/asap/asap-v21-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/asap/asap-v21-latin-regular.svg#Asap') format('svg'); /* Legacy iOS */
+}

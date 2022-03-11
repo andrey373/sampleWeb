@@ -1,0 +1,8 @@
+@media (max-width: 768px) {
+  .menu_list {
+    display: none;
+  }
+  .mobile_menu_btn {
+    display: block;
+  }
+}

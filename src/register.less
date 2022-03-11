@@ -1,0 +1,208 @@
+.register{
+    padding: 90px 15px 180px;
+    background: @bg-color url("../img/bg-img/footprint.png")no-repeat;
+    background-position: bottom right;
+
+    .title_temp_block{
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.form_request{
+    max-width: 380px;
+    margin: 0 auto; 
+    margin-top: 30px;
+
+    .block_input_data{
+        line-height: 0;
+    }
+
+    
+    .label_input_data,
+    .input_data{
+        display: inline-block;
+        width: 100%;
+        line-height: @size-twentysix;
+        background: none;
+        position: relative;
+    }
+
+    .label_input_data:not(:last-child){
+        margin-bottom: 47px;
+    }
+
+    .input_data{
+        padding: 14px 16px;
+        border: none;
+        border: 1px solid @border-input-color;
+        border-radius: 4px;
+
+        &::placeholder{
+            color: @input-placeholder;
+        }
+
+        outline: none;
+    }
+
+    .label_decor{
+        display: none;
+    }
+
+    .input_data{
+    
+        &:focus,
+        &:active{
+            outline: 2px solid @secondary-color;
+
+            +.label_decor{
+                display: inline-block;
+                font-size: 12px;
+                text-align: center;
+                width: 38px;
+                height: 17px;
+                color: @secondary-color;
+                position: absolute;
+                top: -15px;
+                left: 10px;
+                background-color: @bg-color;
+            }
+        }
+
+        &:invalid{
+            outline: 2px solid @border-input-error;
+            +.label_decor{
+                color: @border-input-error;
+            }
+        }
+    }
+}
+
+.block_input_radio{
+    margin: 40px 0 46px;
+
+    .title_select{
+        font-family: 'Nunito-regular', sans-serif;
+        font-size: @size-sixteen;
+        line-height: @size-twentysix;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+
+    .label_radio{
+        display: block;
+        cursor: pointer;
+
+        &:not(:last-child){
+            margin-bottom: 8px;
+        }
+
+        input[type="radio"]{
+            display: none;
+        }
+
+        .circle{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: sub;
+            border: 1px solid @border-input-color;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: relative;
+        }
+    }
+
+    .circle::before{
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        background-color: @secondary-color;
+        border-radius: 50%;
+        opacity: 0;
+    }
+
+    input[type="radio"]:checked{
+        +.circle{
+            border: 1px solid @secondary-color;
+        }
+        +.circle::before{
+            opacity: 1;
+        }
+    }
+}
+
+.label_file,
+.input_file,
+.label_btn{
+    width: 100%;
+}
+
+.input_file{
+    display: none;
+
+    &:invalid{
+        +.input_file_btn{
+            border: 2px solid @border-input-error;
+        }
+    }
+}
+
+.label_file{
+    &:extend(.flex-sp-between);
+    justify-content: flex-start;
+    cursor: pointer;
+
+
+    .input_file_btn{
+        border-radius: 4px 0px 0px 4px;
+        border: 1px solid @border-input;
+        padding: 14px 15px 14px 16px;
+    }
+
+    .input_file_text{
+        width: 100%;
+        padding: 14px 15px 14px 16px;
+        color: @input-placeholder;
+        border-width: 1px;
+        border-style: solid;
+        border-color: @border-input-color @border-input-color @border-input-color transparent;
+        border-radius: 0 4px 4px 0;
+    }
+
+    .input_file_error{
+        border-width: 2px;
+        border-style: solid;
+        border-color: @border-input-error @border-input-error @border-input-error transparent;
+    }
+    .input_file_btn_error{
+        border: 2px solid @border-input-error;
+    }
+}
+
+.label_btn{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.label_btn .sign_btn{
+    width: 148px;
+    padding: 0.75em 1em;
+    background-color: #f4e041;
+    margin-top: 50px;
+    &:hover{
+        background-color: #ffe302;
+    }
+}
+
+.footer_block{
+    text-align: center;
+    padding: 16px 0;
+    background-color: @color-white;
+}

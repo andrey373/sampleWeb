@@ -1,0 +1,80 @@
+a{text-decoration:none;}ul,dl{margin:0;padding:0;}li{list-style:none;}
+*,*:after,*:before{box-sizing: border-box;}h1,h2,h3,h4,p,dd{margin:0;}button{outline:none;}
+a{-webkit-tap-highlight-color:transparent;}fieldset{border: 0;margin: 0;padding: 0;}
+
+
+@import url("var");
+
+html,
+body{
+    font-size: @size-sixteen;
+}
+
+body{
+    font-family: 'Asap-regular', sans-serif;
+    font-weight: 400;
+    line-height: @size-twentysix;
+    background-color: @bg-color;
+    color: @font-black;
+    width: 100%;
+    min-width: 360px;
+    margin: 0;
+    padding: 0;
+}
+
+body.noscroll{
+    overflow: hidden;
+}
+
+button,
+input[type="submit"]{
+    border: none;
+    background: none;
+    padding: 0;
+    outline: 0;
+    color: inherit;
+    cursor: pointer;
+}
+
+a{
+    display: inline-block;
+    color: inherit;
+}
+
+.container{
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+img,
+source{
+    width: 100%;
+    height: 100%;
+}
+
+.sign_btn{
+    font-family: 'Asap-regular', sans-serif;
+    font-weight: 400;
+    font-size: @size-sixteen;
+    line-height: @size-twentysix;
+    padding: 0.75em 1em;
+    border-radius: 4em;
+    background-color: @primary-color;
+    transition: background-color .2s;
+    margin-top: 30px;
+
+    .sign_btn_inner{
+        display: inline-block;
+        width: 115px;
+    }
+    &:hover{
+        background-color: @primary-color-hover;
+    }
+}
+
+@import url('header');
+@import url('features');
+@import url('user');
+@import url('register');
+@import url('responsive');
