@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Document</title>
-	<link rel="shortcut icon" href="" type="image/x-icon">
 	<link rel="stylesheet" href="./css/fonts.css" type="text/css" media="all">
 	<link rel="stylesheet" href="./css/style.min.css" type="text/css" media="all">
 	<style>
@@ -30,18 +29,48 @@
 				<nav class="menu">
 					<ul class="menu_list">
 						<li class="menu_item" v-for="(item, key) in listItem">
-							<a class="menu_item_link" href="#">{{ item }}</a>
+							<a class="menu_item_link" href="#register_anchor" v-if="item === 'Sign Up'">{{ item }}</a>
+							<a v-else class="menu_item_link" href="#">{{ item }}</a>
 						</li>
 					</ul>
-
-					<button class="mobile_menu_btn" type="button">
-						<svg viewBox="0 0 24 24">
-							<path class="svg_path" d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4Z"/>
+					<!--      mobile menu      -->
+					<button class="mobile_menu_btn" type="button" v-on:click="showMenu">
+						<svg class="mobile_menu_svg"> 
+							<path d="M3 17C3 17.5523 3.44772 18 4 18H20C20.5523 18 21 17.5523 21 17C21 16.4477 20.5523 16 20 16H4C3.44772 16 3 16.4477 3 17ZM3 12C3 12.5523 3.44772 13 4 13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H4C3.44772 11 3 11.4477 3 12ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H20C20.5523 8 21 7.55228 21 7C21 6.44772 20.5523 6 20 6H4Z"/>
 						</svg>
 					</button>
-					<div class="mobile_block_menu">
-
-						
+					<div class="overlay" v-on:click="closeOverlay($event)">
+						<div class="mobile_block_menu" v-on:click.stop>
+							<div class="logo_mobile">
+								<a href="#" class="logo">
+									<picture>
+										<source srcset="./img/icon/Logo.webp" type="image/webp">
+										<img src="./img/icon/Logo.png" alt="logo">
+									</picture>
+								</a>
+							</div>
+							<ul class="mobile_menu_list">
+								<li class="mobile_menu_item" v-for="item in listMenuMobile">
+									<a class="mobile_menu_link" 
+									   href="#register_anchor"
+									   v-if="item === 'Sign Up'"
+									   v-on:click="closeOverlay">{{ item }}
+									</a>
+									<a class="mobile_menu_link" href="#" v-else>{{ item }}</a>
+								</li>
+							</ul>
+							<ul class="mobile_menu_list">
+								<li class="mobile_menu_item" v-for="item in listMenuMobileTwo">
+									<a class="mobile_menu_link" href="#">{{ item }}</a>
+								</li>
+							</ul>
+							<ul class="mobile_menu_list">
+								<li class="mobile_menu_item" v-for="item in listMenuMobileThree">
+									<a class="mobile_menu_link" href="#">{{ item }}</a>
+								</li>
+							</ul>
+						</div>
+						<div class="black_block"></div>
 					</div>
 				</nav>
 			</div>
@@ -54,7 +83,10 @@
 				<div class="title_block">
 					<h1 class="title">Test assignment for front-end developers</h1>
 					<p class="title_desc">Front-end developers make sure the user sees and interacts with all the necessary elements to ensure conversion. Therefore, responsive design, programming languages and specific frameworks are the must-have skillsets to look for when assessing your front-end developers.</p>
-					<button class="sign_btn" type="button"><span class="sign_btn_inner">Sign up</span></button>
+					<a class="sign_btn" href="#register_anchor">
+						<!-- <span class="over_btn"></span> -->
+						<span class="sign_btn_inner">Sign up</span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -77,7 +109,10 @@
 					<p class="features_text">
 						What defines a good front-end developer is one that has skilled knowledge of HTML, CSS, JS with a vast understanding of User design thinking as they'll be building web interfaces with accessibility in mind. They should also be excited to learn, as the world of Front-End Development keeps evolving.
 					</p>
-					<button class="sign_btn" type="button"><span class="sign_btn_inner">Sign up</span></button>
+					<a class="sign_btn" href="#register_anchor">
+						<span class="over_btn"></span>
+						<span class="sign_btn_inner">Sign up</span>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -100,14 +135,18 @@
 					<p class="user_email">{{ userItem.email }}</p>
 					<p class="user_tel">{{ userItem.phone }}</p>
 				</div>
+
 			</div>
 			<div class="btn_box">
-				<button class="sign_btn" type="button"><span class="sign_btn_inner">Show more</span></button>
+				<button class="sign_btn" type="button" v-on:click="showMoreUser">
+					<span class="over_btn"></span>
+					<span class="sign_btn_inner">Show more</span>
+				</button>
 			</div>
 		</div>
 	</section>
 
-	<section class="register">
+	<section class="register" id="register_anchor">
 		<div class="container">
 			<div class="title_temp_block">
 				<h2 class="title_temp">Register to get a work</h2>
@@ -131,36 +170,38 @@
 				</fieldset>
 				<fieldset class="block_input_radio">
 					<h3 class="title_select">Select your position</h3>
-					<label class="label_radio">
+					<div class="label_radio">
 						<input type="radio" name="position">
 						<div class="circle"></div>
 						Frontend developer
-					</label>
-					<label class="label_radio">
+					</div>
+					<div class="label_radio">
 						<input type="radio" name="position">
 						<div class="circle"></div>
 						Backend developer
-					</label>
-					<label class="label_radio">
+					</div>
+					<div class="label_radio">
 						<input type="radio" name="position">
 						<div class="circle"></div>
 						Designer
-					</label>
-					<label class="label_radio">
+					</div>
+					<div class="label_radio">
 						<input type="radio" name="position">
 						<div class="circle"></div>
 						QA
-					</label>
+					</div>
 				</fieldset>
 				<fieldset class="block_input_load">
-					<label class="label_file">
+					<div class="label_file">
 						<input class="input_file" type="file" name="file load"  v-on:change="checkFile($event)">
 						<div class="input_file_btn">Upload</div>
 						<div class="input_file_text">Upload your photo</div>
-					</label>
-					<label class="label_btn">
-						<input class="sign_btn" type="submit" name="submit btn" value="Sign up">
-					</label>
+					</div>
+					<div class="label_btn">
+						<div class="sign_btn">
+							<input type="submit" name="submit btn" value="Sign up">
+						</div>
+					</div>
 				</fieldset>
 			</form>
 		</div>
@@ -169,6 +210,7 @@
 	<footer class="footer_block">
 		<span>© abz.agency specially for the test task</span>
 	</footer>
+	<div class="black_block"></div>
 </main>
 	
 	<script src="https://unpkg.com/vue@3"></script>

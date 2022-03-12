@@ -8,6 +8,7 @@ a{-webkit-tap-highlight-color:transparent;}fieldset{border: 0;margin: 0;padding:
 html,
 body{
     font-size: @size-sixteen;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -53,25 +54,81 @@ source{
     height: 100%;
 }
 
+.black_block{
+    width: 100%;
+    height: 40px;
+    background-color: @color-black;
+}
+
 .sign_btn{
+    display: inline-block;
     font-family: 'Asap-regular', sans-serif;
     font-weight: 400;
     font-size: @size-sixteen;
     line-height: @size-twentysix;
+    text-align: center;
     padding: 0.75em 1em;
     border-radius: 4em;
     background-color: @primary-color;
     transition: background-color .2s;
     margin-top: 30px;
+    position: relative;
+    overflow: hidden;
 
     .sign_btn_inner{
         display: inline-block;
         width: 115px;
+        position: relative;
+        z-index: 3;
     }
+    
+    &::before{
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        background-color: rgba(126, 126, 126, 0.5);
+        border-radius: 4em;
+        transition: width .3s;
+        transform: translate(-50%);
+    }
+
     &:hover{
         background-color: @primary-color-hover;
     }
+    &:focus{
+        &::before{
+            width: 80%;
+        }
+    }
+    &:active{
+        &::before{
+            width: 93%;
+            height: 85px;
+        }
+    } 
 }
+
+
+
+.overlay{
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    z-index: 10;
+}
+.overlay_active{
+    display: block;
+}
+
 
 @import url('header');
 @import url('features');

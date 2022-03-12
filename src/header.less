@@ -4,6 +4,7 @@
 .header_top{
     background-color: @color-white;
     padding: 0 10px;
+    z-index: 5;
 }
 
 
@@ -16,6 +17,14 @@
         max-width: 105px;
         height: 26px; 
     }
+}
+
+.header_top.scroll_header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, .8);
 }
 
 .menu_list{
@@ -38,7 +47,8 @@
             background-color: rgba(0, 189, 211, 0.1);
             color: @secondary-color;
         }
-        transition: background-color .2s;
+        transition-property: background-color, color;
+        transition-duration: .2s;
     }
 }
 
@@ -74,7 +84,49 @@
 
 // style for mobile menu
 
-.mobile_block_menu,
 .mobile_menu_btn{
     display: none;
 }
+
+.logo_mobile{
+    background-color: @color-white;
+    padding: 17px 15px;
+    line-height: 0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.mobile_block_menu{
+    display: block;
+    width: 270px;
+    background-color: @color-white;
+}
+
+.mobile_menu_list{
+    padding: 23px 8px;
+
+    &:not(:last-child){
+        border-bottom: 1px solid #E0E0E0;
+    }
+}
+
+.mobile_menu_item{
+
+    &:not(:last-child){
+        margin-bottom: 8px;
+    }
+
+    .mobile_menu_link{
+        width: 100%;
+        padding: 7px 8px;
+        border-radius: 4px;
+        transition-property: background-color, color;
+        transition-duration: .2s;
+
+        &:hover,
+        &:focus{
+            background-color: rgba(0, 189, 211, 0.1);
+            color: @secondary-color;
+        }
+    }
+}
+

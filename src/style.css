@@ -64,6 +64,7 @@ fieldset {
 html,
 body {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 body {
   font-family: 'Asap-regular', sans-serif;
@@ -102,28 +103,76 @@ source {
   width: 100%;
   height: 100%;
 }
+.black_block {
+  width: 100%;
+  height: 40px;
+  background-color: #000;
+}
 .sign_btn {
+  display: inline-block;
   font-family: 'Asap-regular', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
+  text-align: center;
   padding: 0.75em 1em;
   border-radius: 4em;
   background-color: #F4E041;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
   margin-top: 30px;
+  position: relative;
+  overflow: hidden;
 }
 .sign_btn .sign_btn_inner {
   display: inline-block;
   width: 115px;
+  position: relative;
+  z-index: 3;
+}
+.sign_btn::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  background-color: rgba(126, 126, 126, 0.5);
+  border-radius: 4em;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  -webkit-transform: translate(-50%);
+  transform: translate(-50%);
 }
 .sign_btn:hover {
   background-color: #FFE302;
 }
+.sign_btn:focus::before {
+  width: 80%;
+}
+.sign_btn:active::before {
+  width: 93%;
+  height: 85px;
+}
+.overlay {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  z-index: 10;
+}
+.overlay_active {
+  display: block;
+}
 .header_top {
   background-color: #fff;
   padding: 0 10px;
+  z-index: 5;
 }
 .header_inner {
   padding: 10px 0;
@@ -131,6 +180,13 @@ source {
 .header_inner .logo {
   max-width: 105px;
   height: 26px;
+}
+.header_top.scroll_header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .menu_list .menu_item {
   line-height: 0;
@@ -143,8 +199,10 @@ source {
   text-overflow: ellipsis;
   padding: 7px 15px;
   border-radius: 4px;
-  -webkit-transition: background-color 0.2s;
-  transition: background-color 0.2s;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 .menu_list .menu_item_link:hover,
 .menu_list .menu_item_link:focus {
@@ -178,9 +236,42 @@ source {
   max-width: 530px;
   margin: 20px 0 0;
 }
-.mobile_block_menu,
 .mobile_menu_btn {
   display: none;
+}
+.logo_mobile {
+  background-color: #fff;
+  padding: 17px 15px;
+  line-height: 0;
+  border-bottom: 1px solid #E0E0E0;
+}
+.mobile_block_menu {
+  display: block;
+  width: 270px;
+  background-color: #fff;
+}
+.mobile_menu_list {
+  padding: 23px 8px;
+}
+.mobile_menu_list:not(:last-child) {
+  border-bottom: 1px solid #E0E0E0;
+}
+.mobile_menu_item:not(:last-child) {
+  margin-bottom: 8px;
+}
+.mobile_menu_item .mobile_menu_link {
+  width: 100%;
+  padding: 7px 8px;
+  border-radius: 4px;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+.mobile_menu_item .mobile_menu_link:hover,
+.mobile_menu_item .mobile_menu_link:focus {
+  background-color: rgba(0, 189, 211, 0.1);
+  color: #00BDD3;
 }
 .features {
   padding: 180px 30px 90px;
@@ -225,6 +316,7 @@ source {
   grid-template-rows: repeat(3, 313px);
   grid-gap: 30px;
   margin: 30px 0 20px;
+  position: relative;
 }
 .user {
   max-width: 370px;
@@ -437,6 +529,12 @@ source {
 .label_btn .sign_btn:hover {
   background-color: #ffe302;
 }
+.label_btn .sign_btn input[type="submit"] {
+  font-family: 'Asap-regular', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
 .footer_block {
   text-align: center;
   padding: 16px 0;
@@ -454,10 +552,10 @@ source {
     width: 25px;
     height: 25px;
   }
-  .mobile_menu_btn .svg_path {
-    fill: rgba(0, 0, 0, 0.87);
+  .mobile_menu_btn .mobile_menu_svg {
     width: 100%;
     height: 100%;
+    fill: rgba(0, 0, 0, 0.87);
   }
 }
 @media (max-width: 360px) {
@@ -540,5 +638,10 @@ source {
   .register {
     background: #f8f8f8 url(../img/bg-img/mobilefooter.png) no-repeat;
     background-position: 100% 100%;
+  }
+}
+@media (max-width: 360px) {
+  .black_block {
+    height: 50px;
   }
 }
